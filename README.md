@@ -130,7 +130,7 @@ However, Source Quench messages do not provide authentication and could be forge
 
 A controlled ICMP Source Quench packet was generated within the isolated lab network while Snort monitored the traffic.
 
-![Snort ICMP Quench alert](assets/screenshots/06-snort-icmp-quench-alert.png)
+![Snort ICMP Source Quench alert](assets/screenshots/06-snort-icmp-source-quench-alert.png)
 
 **Observation:** Snort examined the generated packet and displayed an alert identifying the ICMP Source Quench traffic.
 
