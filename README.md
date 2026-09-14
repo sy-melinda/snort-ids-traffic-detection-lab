@@ -120,43 +120,8 @@ Important indicators include:
 
 ## 3. ICMP Source Quench Detection
 
-### Detection Technique
 
-Secure Shell (SSH) is an encrypted protocol commonly used for remote system administration. Although SSH protects transmitted data, unauthorized connection attempts may indicate reconnaissance, credential attacks or attempts to access a protected server.
 
-Monitoring SSH traffic allows security analysts to identify which systems are attempting to access administrative services.
-
-### Generating the SSH Connection Attempt
-
-An SSH connection attempt was generated between the designated virtual machines while Snort monitored the lab network.
-
-![Snort SSH connection alert](assets/screenshots/07-snort-ssh-connection-alert.png)
-
-**Observation:** Snort detected traffic associated with the SSH connection attempt and displayed the relevant alert information.
-
-**Result:** The experiment demonstrated that Snort could identify an attempt to access the SSH service and record network indicators such as the source address, destination address and service port.
-
-### Security Analysis
-
-An individual SSH connection is not necessarily malicious because administrators commonly use SSH for legitimate remote access. However, repeated or unexpected attempts may indicate suspicious activity.
-
-Security analysts should examine:
-
-- Whether the source IP address is authorized.
-- The number and frequency of connection attempts.
-- Whether several usernames of credentials were attempted.
-- Whether the source attempted to access other services.
-- Whether authentication ultimately succeeded or failed.
-- Whether the activity ocurred at an unusual time.
-
-Potential defensive measures include:
-
-- Restricting SSH access to trusted IP addresses.
-- Requiring key-based authentication.
-- Disabling direct root login.
-- Using multi-factor authentication where available.
-- Monitoring repeated authentication failures.
-- Blocking sources that demonstrate automated or malicious behavior.
 
   
 
