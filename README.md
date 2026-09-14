@@ -191,6 +191,46 @@ Potential defensive measures include:
 - Monitoring repeated authentication failures.
 - Blocking sources that demonstrate automated or malicious behavior.
 
+---
+
+## 5. Telnet Connection Detection
+
+### Detection Technique
+
+Telnet is a remote-access protocol that transmits usernames, passwords and commands without encryption. This makes Telnet unsuitable for secure system administration because anyone able to observe the network traffic may be able to view sensitive session information.
+
+Monitoring Telnet traffic allows defenders to detect insecure remote-access activity and identify unexpected connections to TCP port 23.
+
+### Establishing the Telnet Connection
+
+A Telnet connection was initiated between the designated virtual machines to generate traffic for Snort analysis.
+
+![Telnet connection test](assets/screenshots/08-telnet-connection-test.png)
+
+**Observation:** The client successfully established a Telnet session with the destination system.
+
+### Detecting the Connection with Snort
+
+Snort inspected the network traffic and generated an alert for the new Telnet connection.
+
+![Snort Telnet connection alert](assets/screenshots/09-snort-telnet-connection-alert.png)
+
+**Result:** Snort successfully detected the Telnet connection and displayed information about the source, destination and network service.
+
+### Security Analysis
+
+The presence of Telnet traffic represents a security concern because the protocol does not protect transmitted credentials or commands. A Telnet alert should therefore be investigated to determine whether the connection was authorized and why an insecure protocol was being used.
+
+Potential defensive measures include:
+
+- Disabling the Telnet service.
+- Replacing Telnet with SSH.
+- Blocking TCP port 23 at network boundaries.
+- Restricting remote administration to trusted devices.
+- Monitoring all attempts to establish Telnet connections.
+- Investigating systems that continue to use legacy protocols.
+- Using network segmentation to protect administrative services.
+
 
 
 
