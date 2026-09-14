@@ -231,10 +231,66 @@ Potential defensive measures include:
 - Investigating systems that continue to use legacy protocols.
 - Using network segmentation to protect administrative services.
 
+---
 
+## 6. Firewall Configuration and Connection Validation
 
+### Defensive Technique
 
+Snort provides visibility by detecting and alerting on suspicious network traffic. A firewall complements this detection capability by enforcing access-control rules and preventing or terminating prohibited connections.
 
-  
+In this part of the lab, PuTTY was used to access the firewall, review its security configuration and test the resulting connection behavior.
 
+### Connecting to the Firewall
 
+PuTTY was configured to establish a management connection to the designated firewall in the isolated lab network.
+
+![PuTTY connection configuration](assets/screenshots/10-putty-connection-configuration.png)
+
+**Observation:** The configuration identified the firewall management address and the connection method used to access its command-line interface.
+
+### Reviewing the Firewall Screen Configuration
+
+The firewall configuration was examined through the command-line interface. The configured screen and security settings determine how the firewall handles selected network traffic.
+
+![Firewall screen configuration](assets/screenshots/11-firewall-screen-configuration.png)
+
+**Observation:** The command output displayed the configured security-screen settings associated with the relevant network zone.
+
+### Verifying the Configuration
+
+A verification command was used to confirm that the intended firewall configuration was present.
+
+![Firewall configuration verification](assets/screenshots/12-firewall-configuration-verification.png)
+
+**Result:** The displayed configuration confirmed that the security settings had been applied to the firewall.
+
+### Testing the Connection
+
+A new connection attempt was performed after the firewall configuration hand been applied.
+
+![Blocked connection result](assets/screenshots/13-blocked-connection-result.png)
+
+**Result:** The connection was closed, demonstrating that the fiewall could enforce the configured security policy and affect unauthorized or prohibited traffic.
+
+### Security Analysis
+
+This exercise demonstrates the complementary roles of intrusion detection and firewall enforcement:
+
+- Snort observes traffic and generates alerts.
+- Security analysts interpret the alerts and determine the risk.
+- Firewalls enforce rules that permit, reject or drop traffic.
+- Verification commands confirm that the intended configuration is active.
+- Connection testing demonstrates whether the control works as expected.
+
+Combining IDS monitoring with firewall controls provides stronger protection than relying on either technology alone. Detection supplies visibility, while firewall enforcement helps prevent suspicious traffic from reaching protected systems.
+
+Recommended practices include:
+
+- Applying least-privilege access-control rules.
+- Reviewing firwall configurations regularly.
+- Testing security rules after implmentation.
+- Monitoring blocked and terminated connections.
+- Correlating Snort alerts with firewall logs.
+- Removing unnecessary or outdated firewall rules.
+- Documenting all authorized configuration changes.
