@@ -120,6 +120,78 @@ Important indicators include:
 
 ## 3. ICMP Source Quench Detection
 
+### Detection Technique
+
+ICMP Source Quench was originally designed to notify a transmitting device that network congestion had ocurred and request that it reduce its transmission rate.
+
+However, Source Quench messages do not provide authentication and could be forged to interfere with network performance. The message type is now obsolete, so its presence on a modern network may warrant investigation.
+
+### Generating and Detecting the Traffic
+
+A controlled ICMP Source Quench packet was generated within the isolated lab network while Snort monitored the traffic.
+
+![Snort ICMP Quench alert](assets/screenshots/06-snort-icmp-quench-alert.png)
+
+**Observation:** Snort examined the generated packet and displayed an alert identifying the ICMP Source Quench traffic.
+
+**Result:** The experiment confirmed that Snort could detect this obsolete ICMP message type and provide information about its source and destination.
+
+### Security Analysis
+
+Because ICMP Source Quench is deprecated, it should not normally appear on a modern network. Detection may indicate a legacy or incorrectly configured device, packet-generation testing or potentially malicious activity.
+
+Recommended defensive actions include:
+
+- Configure modern systems to ignore Source Quench messages.
+- Monitoring for obsolete or unexpected ICMP message types.
+- Investigating the source device responsible for the traffic.
+- Applying anti-spoofing controls at network boundaries.
+- Coreelating the alert with other network and host activity.
+- Keeping operating systems and network devices updated.
+
+---
+
+## 4. SSH Connection Attempt Detection
+
+### Detection Technique
+
+Secure Shell (SSH) is an encrypted protocol commonly used for remote system administration. Although SSH protects transmitted data, unauthorized connection attempts may indicate reconnaissance, credential attacks or attempts to access a protected server.
+
+Monitoring SSH traffic allows security analysts to identify which systems are attempting to access administrative services.
+
+### Generating the SSH Connection Attempt
+
+An SSH connection attempt was generated between the designated virtual machines while Snort monitored the lab network.
+
+![Snort SSH connection alert](assets/screenshots/07-snort-ssh-connection-alert.png)
+
+**Observation:** Snort detected traffic associated with the SSH connection attempt and displayed the relevant alert information.
+
+**Result:** The experiment demonstrated that Snort could identify an attempt to access the SSH service and record network indicators such as the source address, destination address and service port.
+
+### Security Analysis
+
+An individual SSH connection is not necessarily malicious because administrators commonly use SSH for legitimate remote access. However, repeated or unexpected attempts may indicate suspicious activity.
+
+Security analysts should examine:
+
+- Whether the source IP address is authorized.
+- The number and frequency of connection attempts.
+- Whether several usernames or credentials were attempted.
+- Whether the source attempted to access other services.
+- Whether authentication ultimately succeeded or failed.
+- Whether the activity occurred at an unusual time.
+
+Potential defensive measures include:
+
+- Restricting SSH access to trusted IP addresses.
+- Requiring key-based authentication.
+- Disabling direct root login.
+- Using multi-factor authentication where available.
+- Monitoring repeated authentication failures.
+- Blocking sources that demonstrate automated or malicious behavior.
+
+
 
 
 
