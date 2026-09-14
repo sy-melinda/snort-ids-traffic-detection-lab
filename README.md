@@ -79,5 +79,8 @@ Analysts should examine:
 - Whether the traffic matches expected network activity.
 - Whether the same source is generating other suspicious events.
 
-  
+---
 
+## 2. Web-Access Request Detection
+
+### Detection Technique
